@@ -9,17 +9,20 @@ RUN apk add --update \
     ca-certificates \
   && update-ca-certificates
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk
-RUN apk add glibc-2.25-r0.apk
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.34-r0/glibc-2.34-r0.apk
+RUN apk add glibc-2.34-r0.apk
 
 ENV LANG=C.UTF-8
 
 
-# RUN wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.6.3-linux-x86_64.tar.gz
-RUN wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.0.0-linux-x86_64.tar.gz
-RUN tar xzf packetbeat-7.0.0-linux-x86_64.tar.gz
-RUN rm packetbeat-7.0.0-linux-x86_64.tar.gz
-RUN mv packetbeat-7.0.0-linux-x86_64 /packetbeat
+RUN wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.6.3-linux-x86_64.tar.gz
+RUN tar xzf packetbeat-5.6.3-linux-x86_64.tar.gz
+RUN rm packetbeat-5.6.3-linux-x86_64.tar.gz
+RUN mv packetbeat-5.6.3-linux-x86_64 /packetbeat
+# RUN wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.0.0-linux-x86_64.tar.gz
+# RUN tar xzf packetbeat-7.0.0-linux-x86_64.tar.gz
+# RUN rm packetbeat-7.0.0-linux-x86_64.tar.gz
+# RUN mv packetbeat-7.0.0-linux-x86_64 /packetbeat
 COPY scripts/runner_pbeat.sh /runner_pbeat.sh
 RUN chmod +x /runner_pbeat.sh
 
