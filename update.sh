@@ -9,11 +9,12 @@ if [ $# -eq 0 ] ; then
 fi
 
 export VERSION=$1
-export ALPINE_VERSION=3.14
+export ALPINE_VERSION=3.19
 PLATFORMS=(
 	"alpine"
 	"scratch"
 	"windows/1809"
+	"windows/servercore-ltsc2022"
 )
 
 SCRIPT_DIRNAME_ABSOLUTEPATH="$(cd "$(dirname "$0")" && pwd -P)"
